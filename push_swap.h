@@ -4,6 +4,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stddef.h>
+#include <limits.h> // INT_MAX
 
 typedef struct s_node
 {
