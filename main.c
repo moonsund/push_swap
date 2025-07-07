@@ -8,12 +8,12 @@ int main(int argc, char **argv)
     stack_b = NULL;
     if (argc < 2)
         return (0);
-    
     stack_a = parse_argv(argc, argv);
-    if (stack_a = NULL)
+    if (stack_a == NULL)
         ps_error(stack_a);
     
-    push_swap(stack_a, stack_b);
+    // push_swap(stack_a, stack_b);
+    write(2, "XXXXX\n", 6);
     
     free_stack(stack_a);
     free_stack(stack_b);

@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void ps_lstadd_back(t_node **lst, t_node *new)
+static void ps_lstadd_back(t_node **lst, t_node *new)
 {
     t_node *last_node;
     
@@ -17,7 +17,7 @@ void ps_lstadd_back(t_node **lst, t_node *new)
     last_node->next = new;
 }
 
-t_node *ps_lstnew(void *value)
+static t_node *ps_lstnew(int value)
 {
     t_node *node;
 
@@ -29,7 +29,7 @@ t_node *ps_lstnew(void *value)
     return node;
 }
 
-int is_valid_int(const char *str)
+static int is_valid_int(const char *str)
 {
 	int		sign;
 	int		value;
@@ -53,6 +53,7 @@ int is_valid_int(const char *str)
 		value = value * 10 + (*str - '0');
         if ((sign == 1 && value > INT_MAX) ||
             (sign == -1 && value > (long long)INT_MAX + 1))
+            write(2, "Error\n", 6);
 		str++;
 	}
     if (!digit_seen && *str != '\0')
@@ -60,7 +61,7 @@ int is_valid_int(const char *str)
 	return (1);
 }
 
-int has_dublicate(t_node *stack, int number)
+static int has_dublicate(t_node *stack, int number)
 {
     while (!stack)
         {
@@ -71,13 +72,12 @@ int has_dublicate(t_node *stack, int number)
     return (0);
 }
 
-t_node *parse_validate(int argc, char **argv)
+t_node *parse_argv(int argc, char **argv)
 {
     char	**input_array;
     size_t i;
     int tmp;
     t_node *stack_a;
-    t_node *new_node;
     int should_free;
 
     stack_a = NULL;
@@ -90,7 +90,7 @@ t_node *parse_validate(int argc, char **argv)
         input_array = argv + 1;
     i = 0;
     while (input_array[i])
-    { 
+    {
         if (!is_valid_int(input_array[i]))
             ps_error(stack_a); 
         tmp = atoi(input_array[i]);
