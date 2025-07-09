@@ -13,7 +13,11 @@ int main(int argc, char **argv)
         ps_error(stack_a);
     
     // push_swap(stack_a, stack_b);
-    write(2, "XXXXX\n", 6);
+    while (stack_a != NULL)
+    {
+        printf("int: %d\n", stack_a->value);
+        stack_a = stack_a->next;
+    }
     
     free_stack(stack_a);
     free_stack(stack_b);

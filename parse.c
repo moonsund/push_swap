@@ -32,7 +32,7 @@ static t_node *ps_lstnew(int value)
 static int is_valid_int(const char *str)
 {
 	int		sign;
-	int		value;
+	long		value;
     int digit_seen;
 
 	sign = 1;
@@ -53,7 +53,7 @@ static int is_valid_int(const char *str)
 		value = value * 10 + (*str - '0');
         if ((sign == 1 && value > INT_MAX) ||
             (sign == -1 && value > (long long)INT_MAX + 1))
-            write(2, "Error\n", 6);
+            return (0);
 		str++;
 	}
     if (!digit_seen && *str != '\0')
@@ -63,7 +63,7 @@ static int is_valid_int(const char *str)
 
 static int has_dublicate(t_node *stack, int number)
 {
-    while (!stack)
+    while (stack != NULL)
         {
             if (stack->value == number)
                 return (1);
@@ -80,6 +80,7 @@ t_node *parse_argv(int argc, char **argv)
     t_node *stack_a;
     int should_free;
 
+    should_free = 0;
     stack_a = NULL;
     if (argc == 2)
     {
