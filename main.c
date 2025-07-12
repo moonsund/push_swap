@@ -11,13 +11,19 @@ int main(int argc, char **argv)
     stack_a = parse_argv(argc, argv);
     if (stack_a == NULL)
         ps_error(stack_a);
+    assign_index(stack_a);
     
+    // sa(&stack_a);
+
+    print_stack(stack_a);
+    // print_stack(stack_b);
+
+    rra(&stack_a);
+
+    print_stack(stack_a);
+    // print_stack(stack_b);
+
     // push_swap(stack_a, stack_b);
-    while (stack_a != NULL)
-    {
-        printf("int: %d\n", stack_a->value);
-        stack_a = stack_a->next;
-    }
     
     free_stack(stack_a);
     free_stack(stack_b);

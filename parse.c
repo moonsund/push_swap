@@ -15,16 +15,19 @@ static void ps_lstadd_back(t_node **lst, t_node *new)
     while (last_node->next != NULL)
         last_node = last_node->next;
     last_node->next = new;
+    new->prev = last_node;
 }
 
-static t_node *ps_lstnew(int value)
+static t_node *ps_lstnew(int index, int value)
 {
     t_node *node;
 
     node = (t_node *)malloc(sizeof(t_node));
     if (!node)
         return (NULL);
+    node->index = index;   
     node->value = value;
+    node->prev = NULL;
     node->next = NULL;
     return node;
 }
@@ -97,7 +100,7 @@ t_node *parse_argv(int argc, char **argv)
         tmp = atoi(input_array[i]);
         if (has_dublicate(stack_a, tmp))
             ps_error(stack_a);
-        ps_lstadd_back(&stack_a, ps_lstnew(tmp));
+        ps_lstadd_back(&stack_a, ps_lstnew(i, tmp));
         i++;
     }
     if (should_free)

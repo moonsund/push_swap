@@ -3,7 +3,7 @@ NAME = push_swap
 CC = cc
 CFLAGS = -g -Wall
 
-SRC = main.c utils.c push_swap.c parse.c
+SRC = main.c utils.c push_swap.c parse.c operations.c
 OBJ = $(SRC:.c=.o)
 
 LIBFT_DIR = libft

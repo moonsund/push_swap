@@ -1,5 +1,27 @@
 #include "push_swap.h"
 
+void assign_index(t_node *stack)
+{
+    t_node *compare;
+    t_node *current;
+    int index;
+
+    compare = stack;
+    while(compare)
+    {
+        current = stack;
+        index = 0;
+        while(current)
+        {
+            if (compare->value > current->value)
+                index++;
+            current = current->next;
+        }
+        compare->index = index;
+        compare = compare->next;
+    }
+}
+
 void	ps_error(t_node *stack)
 {
 	free_stack(stack);
@@ -30,4 +52,17 @@ void free_array(char **array)
         i++;
     }
     free(array);
+}
+
+
+void print_stack(t_node *stack)
+{
+    t_node *tmp;
+
+    tmp = stack;
+    while (tmp != NULL)
+    {
+        printf("ndx: %d, int: %d\n", tmp->index, tmp->value);
+        tmp = tmp->next;
+    }
 }
