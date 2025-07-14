@@ -2,32 +2,25 @@
 
 int main(int argc, char **argv)
 {
-    t_node *stack_a;
-    t_node *stack_b;
+    t_node *stack;
 
-    stack_b = NULL;
     if (argc < 2)
         return (0);
-    stack_a = parse_argv(argc, argv);
-    if (stack_a == NULL)
-        ps_error(stack_a);
-    assign_index(stack_a);
+    stack = parse_argv(argc, argv);
+    if (stack == NULL)
+        ps_error(stack);
+    assign_index(stack);
     
-    // sa(&stack_a);
 
-    print_stack(stack_a);
-    // print_stack(stack_b);
 
-    sort_small(&stack_a);
-    // rb(&stack_a);
-    // rb(&stack_a);
+    print_stack(stack);
 
-    print_stack(stack_a);
-    // print_stack(stack_b);
+    sort_small(&stack);
 
-    // push_swap(&stack_a, &stack_b);
+    print_stack(stack);
+
+    // push_swap(&stack_a);
     
-    free_stack(stack_a);
-    free_stack(stack_b);
+    free_stack(stack);
     return (0);
 }

@@ -1,5 +1,43 @@
 #include "push_swap.h"
 
+static void ps_lstadd_back(t_node **lst, t_node *new);
+static t_node *ps_lstnew(int index, int value);
+static int is_valid_int(const char *str);
+static int has_dublicate(t_node *stack, int number);
+
+t_node *parse_argv(int argc, char **argv)
+{
+    char	**input_array;
+    size_t i;
+    int tmp;
+    t_node *stack_a;
+    int should_free;
+
+    should_free = 0;
+    stack_a = NULL;
+    if (argc == 2)
+    {
+        input_array = ft_split(argv[1], ' ');
+        should_free = 1;
+    }
+    else 
+        input_array = argv + 1;
+    i = 0;
+    while (input_array[i])
+    {
+        if (!is_valid_int(input_array[i]))
+            ps_error(stack_a); 
+        tmp = atoi(input_array[i]);
+        if (has_dublicate(stack_a, tmp))
+            ps_error(stack_a);
+        ps_lstadd_back(&stack_a, ps_lstnew(i, tmp));
+        i++;
+    }
+    if (should_free)
+        free_array(input_array);
+    return (stack_a);
+}
+
 static void ps_lstadd_back(t_node **lst, t_node *new)
 {
     t_node *last_node;
@@ -73,37 +111,4 @@ static int has_dublicate(t_node *stack, int number)
             stack = stack->next;
         }
     return (0);
-}
-
-t_node *parse_argv(int argc, char **argv)
-{
-    char	**input_array;
-    size_t i;
-    int tmp;
-    t_node *stack_a;
-    int should_free;
-
-    should_free = 0;
-    stack_a = NULL;
-    if (argc == 2)
-    {
-        input_array = ft_split(argv[1], ' ');
-        should_free = 1;
-    }
-    else 
-        input_array = argv + 1;
-    i = 0;
-    while (input_array[i])
-    {
-        if (!is_valid_int(input_array[i]))
-            ps_error(stack_a); 
-        tmp = atoi(input_array[i]);
-        if (has_dublicate(stack_a, tmp))
-            ps_error(stack_a);
-        ps_lstadd_back(&stack_a, ps_lstnew(i, tmp));
-        i++;
-    }
-    if (should_free)
-        free_array(input_array);
-    return (stack_a);
 }
