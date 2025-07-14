@@ -18,12 +18,14 @@ int main(int argc, char **argv)
     print_stack(stack_a);
     // print_stack(stack_b);
 
-    rra(&stack_a);
+    sort_small(&stack_a);
+    // rb(&stack_a);
+    // rb(&stack_a);
 
     print_stack(stack_a);
     // print_stack(stack_b);
 
-    // push_swap(stack_a, stack_b);
+    // push_swap(&stack_a, &stack_b);
     
     free_stack(stack_a);
     free_stack(stack_b);

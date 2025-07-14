@@ -54,6 +54,20 @@ void free_array(char **array)
     free(array);
 }
 
+int ps_lstsize(t_node *lst)
+{
+    int i;
+    t_node *current;
+
+    i = 0;
+    current = lst;
+    while (current != NULL)
+    {
+        current = current->next;
+        i++;
+    }
+    return (i);
+}
 
 void print_stack(t_node *stack)
 {
@@ -65,4 +79,19 @@ void print_stack(t_node *stack)
         printf("ndx: %d, int: %d\n", tmp->index, tmp->value);
         tmp = tmp->next;
     }
+}
+
+int find_pos(t_node *stack)
+{
+    int i;
+    t_node *current;
+
+    i = 1;
+    current = stack;
+    while (current->index != 0)
+    {
+        current = current->next;
+        i++;
+    }
+    return (i);
 }

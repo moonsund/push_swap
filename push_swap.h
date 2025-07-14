@@ -24,6 +24,8 @@ t_node *parse_argv(int argc, char **argv);
 void ps_error(t_node *stack);
 void free_stack(t_node *stack);
 void free_array(char **array);
+int ps_lstsize(t_node *lst);
+int find_pos(t_node *stack);
 void print_stack(t_node *stack); // TO BE DELETED
 
 // operations.c
@@ -36,9 +38,13 @@ void ra(t_node **a);
 void rb(t_node **b);
 void rr(t_node **a, t_node **b);
 void rra(t_node **a);
-// void rrb(t_node **b);
-// void rrr(t_node **a, t_node **b);
+void rrb(t_node **b);
+void rrr(t_node **a, t_node **b);
 
+// push_swap
+void sort_small(t_node **a);
+void sort_3(t_node **a);
+void sort_5(t_node **stack_a);
 
 
 
