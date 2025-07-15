@@ -1,13 +1,10 @@
 #include "push_swap.h"
 
 static void sort_3(t_node **stack);
-static void sort_5(t_node **stack_a);
+static void sort_5(t_node **stack_a, int stack_size);
 
-void sort_small(t_node **stack)
+void sort_small(t_node **stack, int stack_size)
 {
-    int stack_size;
-
-    stack_size = get_stack_size(*stack);
     if (stack_size == 2)
     {
         if ((*stack)->value > (*stack)->next->value)
@@ -16,7 +13,7 @@ void sort_small(t_node **stack)
     else if (stack_size == 3)
         sort_3(stack);
     else if (stack_size == 4 || stack_size == 5)
-        sort_5(stack);
+        sort_5(stack, stack_size);
 }
 
 static void sort_3(t_node **stack)
@@ -45,16 +42,14 @@ static void sort_3(t_node **stack)
     }
 }
 
-static void sort_5(t_node **stack_a)
+static void sort_5(t_node **stack_a, int stack_size)
 {
     t_node *stack_b;
     int position;
-    int stack_size;
     int target_index;
     
     stack_b = NULL;
     target_index = 0;
-    stack_size = get_stack_size(*stack_a);
     while (stack_size > 3)
     {
         position = find_position(*stack_a, target_index);
@@ -70,6 +65,6 @@ static void sort_5(t_node **stack_a)
         target_index++;
     }
     sort_3(stack_a);
-    while (get_stack_size(stack_b) > 0)
+    while (stack_b)
         pa(stack_a, &stack_b);
 }

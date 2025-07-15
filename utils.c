@@ -54,29 +54,14 @@ void free_array(char **array)
     free(array);
 }
 
-int get_stack_size(t_node *lst)
+int get_stack_size(t_node *stack)
 {
     int i;
     t_node *current;
 
     i = 0;
-    current = lst;
-    while (current != NULL)
-    {
-        current = current->next;
-        i++;
-    }
-    return (i);
-}
-
-int find_position(t_node *stack, int target_index)
-{
-    int i;
-    t_node *current;
-
-    i = 1;
     current = stack;
-    while (current->index != target_index)
+    while (current != NULL)
     {
         current = current->next;
         i++;

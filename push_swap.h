@@ -17,10 +17,9 @@ typedef struct s_node
 } t_node;
 
 
+// utils.c
 void assign_index(t_node *stack_a);
 t_node *parse_argv(int argc, char **argv);
-
-// utils.c
 void ps_error(t_node *stack);
 void free_stack(t_node *stack);
 void free_array(char **array);
@@ -42,8 +41,8 @@ void rrb(t_node **b);
 void rrr(t_node **a, t_node **b);
 
 // push_swap
-void sort_small(t_node **a);
-
+void push_swap(t_node **stack);
+void sort_small(t_node **a, int stack_size);
 
 
 

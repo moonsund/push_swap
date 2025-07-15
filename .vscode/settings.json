@@ -3,6 +3,9 @@
         "push_swap.h": "c",
         "unistd.h": "c",
         "stdlib.h": "c",
-        "chrono": "c"
+        "chrono": "c",
+        "limits": "c",
+        "ratio": "c",
+        "algorithm": "c"
     }
 }
