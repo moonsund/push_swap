@@ -9,11 +9,11 @@ void sort_small(t_node **stack, int stack_size)
     if (stack_size == 2)
     {
         if ((*stack)->value > (*stack)->next->value)
-            sa(stack);
+            swap(stack, "sa\n");
     }
-    else if (stack_size == 3)
+    else if (stack_size <= 3)
         sort_3(stack);
-    else if (stack_size == 4 || stack_size == 5)
+    else if (stack_size <= 5)
         sort_5(stack, stack_size);
 }
 
@@ -26,19 +26,19 @@ static void sort_3(t_node **stack)
     if (x < y && y < z)
         return;
     else if (x > y && y < z && x < z)
-        sa(stack);
+        swap(stack, "sa\n");
     else if (x > y && y < z && x > z)
         ra(stack);
     else if (x < y && y > z && x > z)
         rra(stack);
     else if (x > y && y > z)
     {
-        sa(stack);
+        swap(stack, "sa\n");
         rra(stack);
     }
     else if (x < y && y > z && x < z)
     {
-        sa(stack);
+        swap(stack, "sa\n");
         ra(stack);
     }
 }
@@ -61,13 +61,13 @@ static void sort_5(t_node **stack_a, int stack_size)
             else
                 rra(stack_a);
         }
-        pb(stack_a, &stack_b);
+        push(stack_a, &stack_b, "pb\n");
         stack_size--;
         target_index++;
     }
     sort_3(stack_a);
     while (stack_b)
-        pa(stack_a, &stack_b);
+        push(&stack_b, stack_a, "pa\n");
 }
 
 static int find_position(t_node *stack, int target_index)

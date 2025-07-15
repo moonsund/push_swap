@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void sa(t_node **stack)
+void swap(t_node **stack, const char *cmd)
 {
     t_node *first;
     t_node *second;
@@ -19,77 +19,34 @@ void sa(t_node **stack)
     first->prev = second;
 
     *stack = second;
-    write(1, "sa\n", 3);
-}
-
-void sb(t_node **stack)
-{
-    t_node *first;
-    t_node *second;
-
-    if (!stack || !(*stack) || !(*stack)->next)
-        return;
-    
-    first = *stack;
-    second = first->next;
-
-    first->next = second->next;
-    if (second->next)
-        second->next->prev = first;
-    second->prev = NULL;
-    second->next = first;
-    first->prev = second;
-
-    *stack = second;
-    write(1, "sb\n", 3);
+    write(1, cmd, 3);
 }
 
 void ss(t_node **stack_a, t_node **stack_b)
 {
-    sa(stack_a);
-    sb(stack_b);
+    // sa(stack_a);
+    // sb(stack_b);
 }
 
-void pa(t_node **stack_a, t_node **stack_b)
+void push(t_node **origin, t_node **target, const char *cmd)
 {
     t_node *top;
 
-    if (!stack_b || !(*stack_b))
+    if (!origin || !(*origin))
         return;
     
-    top = *stack_b;
+    top = *origin;
 
-    *stack_b = (*stack_b)->next;
-    if (*stack_b)
-        (*stack_b)->prev = NULL;
+    *origin = (*origin)->next;
+    if (*origin)
+        (*origin)->prev = NULL;
 
-    top->next = *stack_a;
-    if (*stack_a)
-        (*stack_a)->prev = top;
+    top->next = *target;
+    if (*target)
+        (*target)->prev = top;
     top->prev = NULL;
-    *stack_a = top;
-    write(1, "pa\n", 3);
-}
-
-void pb(t_node **stack_a, t_node **stack_b)
-{
-    t_node *top;
-
-    if (!stack_a || !(*stack_a))
-        return;
-    
-    top = *stack_a;
-
-    *stack_a = (*stack_a)->next;
-    if (*stack_a)
-        (*stack_a)->prev = NULL;
-
-    top->next = *stack_b;
-    if (*stack_b)
-        (*stack_b)->prev = top;
-    top->prev = NULL;
-    *stack_b = top;
-    write(1, "pb\n", 3);
+    *target = top;
+    write(1, cmd, 3);
 }
 
 void ra(t_node **stack)

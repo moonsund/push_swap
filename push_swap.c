@@ -34,13 +34,13 @@ static void radix_sort(t_node **stack_a, int stack_size)
         while (j < stack_size)
         {
             if ((((*stack_a)->index >> i) & 1) == 0)
-                pb(stack_a, &stack_b);
+                push(stack_a, &stack_b, "pb\n");
             else
                 ra(stack_a);
             j++;
         }
         while (stack_b)
-            pa(stack_a, &stack_b);
+            push(&stack_b, stack_a, "pa\n");
         i++;
     }
 }

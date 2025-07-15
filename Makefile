@@ -22,7 +22,7 @@ $(LIBFT_A):
 	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(NAME)
 	make -C $(LIBFT_DIR) fclean
 
 fclean: clean
