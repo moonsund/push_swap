@@ -2,6 +2,7 @@
 
 static void sort_3(t_node **stack);
 static void sort_5(t_node **stack_a, int stack_size);
+static int find_position(t_node *stack, int target_index);
 
 void sort_small(t_node **stack, int stack_size)
 {
@@ -67,4 +68,19 @@ static void sort_5(t_node **stack_a, int stack_size)
     sort_3(stack_a);
     while (stack_b)
         pa(stack_a, &stack_b);
+}
+
+static int find_position(t_node *stack, int target_index)
+{
+    int i;
+    t_node *current;
+
+    i = 1;
+    current = stack;
+    while (current->index != target_index)
+    {
+        current = current->next;
+        i++;
+    }
+    return (i);
 }

@@ -16,16 +16,10 @@ typedef struct s_node
     struct s_node *next;
 } t_node;
 
-
-// utils.c
-void assign_index(t_node *stack_a);
+// push_swap
 t_node *parse_argv(int argc, char **argv);
-void ps_error(t_node *stack);
-void free_stack(t_node *stack);
-void free_array(char **array);
-int get_stack_size(t_node *stack);
-int find_position(t_node *stack, int target_index);
-void print_stack(t_node *stack); // TO BE DELETED
+void push_swap(t_node **stack);
+void sort_small(t_node **a, int stack_size);
 
 // operations.c
 void sa(t_node **a);
@@ -40,9 +34,13 @@ void rra(t_node **a);
 void rrb(t_node **b);
 void rrr(t_node **a, t_node **b);
 
-// push_swap
-void push_swap(t_node **stack);
-void sort_small(t_node **a, int stack_size);
+// utils.c
+void assign_index(t_node *stack_a);
+void ps_error(t_node *stack);
+void free_stack(t_node *stack);
+void free_array(char **array);
+int get_stack_size(t_node *stack);
+void print_stack(t_node *stack); // TO BE DELETED
 
 
 

@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 
     print_stack(stack);
 
-    sort_small(&stack);
+    push_swap(&stack);
 
     print_stack(stack);
 
