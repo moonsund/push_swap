@@ -6,21 +6,11 @@ int main(int argc, char **argv)
 
     if (argc < 2)
         return (0);
-    stack = parse_argv(argc, argv);
+    stack = build_stack_from_args(argc, argv);
     if (stack == NULL)
-        ps_error(stack);
+        error(stack);
     assign_index(stack);
-    
-
-
-    print_stack(stack);
-
-    push_swap(&stack);
-
-    print_stack(stack);
-
-    // push_swap(&stack_a);
-    
+    push_swap(&stack); 
     free_stack(stack);
     return (0);
 }

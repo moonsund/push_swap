@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static void radix_sort(t_node **stack, int stack_size);
+static void sort_radix(t_node **stack, int stack_size);
 static int get_max_bits(t_node *stack);
 static int is_sorted(t_node *stack);
 
@@ -15,10 +15,10 @@ void push_swap(t_node **stack)
     else if (stack_size < 6)
         sort_small(stack, stack_size);
     else
-        radix_sort(stack, stack_size);
+        sort_radix(stack, stack_size);
 }
 
-static void radix_sort(t_node **stack_a, int stack_size)
+static void sort_radix(t_node **stack_a, int stack_size)
 {
     int i;
     int j;
@@ -36,7 +36,7 @@ static void radix_sort(t_node **stack_a, int stack_size)
             if ((((*stack_a)->index >> i) & 1) == 0)
                 push(stack_a, &stack_b, "pb\n");
             else
-                ra(stack_a);
+                rotate(stack_a);
             j++;
         }
         while (stack_b)

@@ -22,7 +22,7 @@ void assign_index(t_node *stack)
     }
 }
 
-void	ps_error(t_node *stack)
+void	error(t_node *stack)
 {
 	free_stack(stack);
 	write(2, "Error\n", 6);
@@ -67,16 +67,4 @@ int get_stack_size(t_node *stack)
         i++;
     }
     return (i);
-}
-
-void print_stack(t_node *stack)
-{
-    t_node *tmp;
-
-    tmp = stack;
-    while (tmp != NULL)
-    {
-        printf("ndx: %d, int: %d\n", tmp->index, tmp->value);
-        tmp = tmp->next;
-    }
 }

@@ -3,7 +3,7 @@ NAME = push_swap
 CC = cc
 CFLAGS = -g -Wall
 
-SRC = main.c utils.c push_swap.c parse.c operations.c sort_small.c
+SRC = main.c init_stack.c push_swap.c sort_small.c commands.c utils.c    
 OBJ = $(SRC:.c=.o)
 
 LIBFT_DIR = libft
@@ -22,7 +22,7 @@ $(LIBFT_A):
 	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
 
 clean:
-	rm -f $(OBJ) $(NAME)
+	rm -f $(OBJ)
 	make -C $(LIBFT_DIR) fclean
 
 fclean: clean

@@ -7,6 +7,19 @@
         "limits": "c",
         "ratio": "c",
         "algorithm": "c",
-        "variant": "c"
+        "variant": "c",
+        "__bit_reference": "c",
+        "__node_handle": "c",
+        "atomic": "c",
+        "bitset": "c",
+        "__memory": "c",
+        "locale": "c",
+        "optional": "c",
+        "system_error": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "vector": "c",
+        "cstddef": "c",
+        "stddef.h": "c"
     }
 }
